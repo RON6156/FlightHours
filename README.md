@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-Just open `index.html` in your browser — no installation required.
+Click here!  [FlightHours](https://flighthours.netlify.app/)
 
 ## Usage
 
