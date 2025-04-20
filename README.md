@@ -21,7 +21,7 @@ Click here!  [FlightHours](https://flighthours.netlify.app/)
 ## Usage
 
 1. Select your **Aircraft Type** from the dropdown.
-2. Enter the **Route Distance** in kilometers (e.g., `13700`).
+2. Enter the **Route Distance** in kilometers (e.g., `13,700 km`).
 3. Click **Calculate** to get the estimated flight time.
 
 ## Aircraft Speed Reference
