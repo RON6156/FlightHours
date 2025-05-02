@@ -207,36 +207,43 @@
                 964: 964 // A380
             };
 
-            function calculate(event) {
-                event.preventDefault();
+function calculate(event) {
+    event.preventDefault();
 
-                const aircraftCode = document.getElementById("aircraft").value;
-                const distanceValue = document
-                    .getElementById("distance")
-                    .value.replace(/[^\d.]/g, "");
+    const aircraftCode = document.getElementById("aircraft").value;
+    const distanceField = document.getElementById("distance");
+    const distanceValue = distanceField.value.replace(/[^\d.]/g, "");
 
-                const speed = aircraftSpeeds[aircraftCode];
-                const distance = parseFloat(distanceValue);
+    const speed = aircraftSpeeds[aircraftCode];
+    const distance = parseFloat(distanceValue);
 
-                if (!speed || isNaN(distance) || distance <= 0) {
-                    Swal.fire(
-                        "Error",
-                        "Please select a valid aircraft and enter a valid distance.",
-                        "error"
-                    );
-                    return;
-                }
+    if (!speed || isNaN(distance) || distance <= 0) {
+        Swal.fire(
+            "Error",
+            "Please select a valid aircraft and enter a valid distance.",
+            "error"
+        );
+        return;
+    }
 
-                const time = distance / speed;
-                const hours = Math.floor(time);
-                const minutes = Math.round((time - hours) * 60);
+    const time = distance / speed;
+    const hours = Math.floor(time);
+    const minutes = Math.round((time - hours) * 60);
 
-                Swal.fire(
-                    "Calculation Complete",
-                    `Flight Time: ${hours} hours and ${minutes} minutes`,
-                    "success"
-                );
-            }
+    Swal.fire({
+        title: "Calculation Complete",
+        html: `
+            Aircraft Speed: ${speed} kph<br>
+            Route Distance: ${distance} km<br>
+            Flight Time: ${hours} hours and ${minutes} minutes
+        `,
+        icon: "success"
+    });
+
+    // Clear only the distance input
+    $("#aircraft").val("").trigger("change.select2");
+    distanceField.value = "";
+}
         </script>
     </body>
 </html>
